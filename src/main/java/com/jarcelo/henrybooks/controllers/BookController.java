@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.jarcelo.henrybooks.models.Book;
 import com.jarcelo.henrybooks.models.BookDao;
 
 @Controller
@@ -24,4 +25,10 @@ public class BookController {
 		return "Number of books: " + bookCount;
 	}
 	
+	@RequestMapping("/book/get")
+	@ResponseBody
+	public String getBook(String id) {
+		Book book = bookDao.findOne(id);
+		return "" + book;
+	}
 }

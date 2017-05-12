@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.jarcelo.henrybooks.models.Store;
 import com.jarcelo.henrybooks.models.StoreDao;
 
 @Controller
@@ -22,5 +23,12 @@ public class StoreController {
 			return "Error retrieving store count " + e.getMessage();
 		}
 		return "Number of stores: " + storeCount;
+	}
+	
+	@RequestMapping("/store/get")
+	@ResponseBody
+	public String getStore(long id) {
+		Store store = storeDao.findOne(id);
+		return "" + store;
 	}
 }

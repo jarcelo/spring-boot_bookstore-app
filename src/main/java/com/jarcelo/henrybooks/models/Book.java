@@ -10,7 +10,7 @@ import javax.persistence.Id;
 public class Book {
 	@Id
 	@Column(name = "bookID")
-	private String Id;
+	private String id;
 	
 	@Column(name = "title")
 	private String title;
@@ -32,11 +32,11 @@ public class Book {
 
 	
 	public String getId() {
-		return Id;
+		return id;
 	}
 
 	public void setId(String id) {
-		Id = id;
+		this.id = id;
 	}
 
 	public String getTitle() {
@@ -79,5 +79,10 @@ public class Book {
 		this.price = price;
 	}
 	
-	
+	@Override
+	public String toString() {
+		   return String.format("Book Code: " + this.id + "<br>" +
+	               "Book Title: " + this.title + "<br>" +
+	               "Author: " + this.author);
+	}
 }

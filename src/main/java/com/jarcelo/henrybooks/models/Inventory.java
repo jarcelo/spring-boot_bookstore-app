@@ -1,5 +1,8 @@
 package com.jarcelo.henrybooks.models;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -23,11 +26,13 @@ public class Inventory {
 	private long storeId;
 	
 	@Column(name = "OnHand")
-	private long numberOfBooksOnHand;
+	private long booksOnHand;
 	
-	@OneToMany(fetch = FetchType.EAGER)
-	@JoinColumn(name = "bookID", insertable = false, updatable = false)
-	private Book book;
+	//@OneToMany(fetch = FetchType.EAGER)
+	//@JoinColumn(name = "bookID", insertable = false, updatable = false)
+	//private Book book;
+	//@OneToMany(mappedBy = "bookId", cascade = CascadeType.ALL)
+	//private Set<Book> books;
 
 	
 	public Inventory() {}
@@ -56,12 +61,12 @@ public class Inventory {
 		this.storeId = storeId;
 	}
 
-	public long getNumberOfBooksOnHand() {
-		return numberOfBooksOnHand;
+	public long getBooksOnHand() {
+		return booksOnHand;
 	}
 
-	public void setNumberOfBooksOnHand(long numberOfBooksOnHand) {
-		this.numberOfBooksOnHand = numberOfBooksOnHand;
+	public void setBooksOnHand(long booksOnHand) {
+		this.booksOnHand = booksOnHand;
 	}
 	
 }

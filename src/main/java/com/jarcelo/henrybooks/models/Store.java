@@ -10,13 +10,13 @@ import javax.persistence.Id;
 public class Store {
 	@Id
 	@Column(name ="storeId")
-	private long Id;
+	private long id;
 	
 	@Column(name = "storeName")
-	private String Name;
+	private String name;
 	
 	@Column(name = "storeAddr")
-	private String Address;
+	private String address;
 	
 	@Column(name = "storeEmp")
 	private long numberOfEmployees;
@@ -26,27 +26,27 @@ public class Store {
 	
 
 	public long getId() {
-		return Id;
+		return id;
 	}
 
 	public void setId(long id) {
-		Id = id;
+		this.id = id;
 	}
 
 	public String getName() {
-		return Name;
+		return name;
 	}
 
 	public void setName(String name) {
-		Name = name;
+		this.name = name;
 	}
 
 	public String getAddress() {
-		return Address;
+		return this.address;
 	}
 
 	public void setAddress(String address) {
-		Address = address;
+		this.address = address;
 	}
 
 	public long getNumberOfEmployees() {
@@ -55,6 +55,13 @@ public class Store {
 
 	public void setNumberOfEmployees(long numberOfEmployees) {
 		this.numberOfEmployees = numberOfEmployees;
+	}
+	
+	@Override
+	public String toString() {
+		   return String.format("Branch Number: " + this.id + "<br>" +
+	               "Branch Name: " + this.name + "<br>" +
+	               "Branch Location: " + this.address);
 	}
 	
 }

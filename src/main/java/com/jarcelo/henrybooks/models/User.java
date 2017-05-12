@@ -11,13 +11,13 @@ public class User {
 	
 	@Id
 	@Column(name ="userId")
-	private double Id;
+	private long Id;
 	
 	@Column(name ="userName")
 	private String name;
 	
 	@Column(name ="userPassword")
-	private double password;
+	private long password;
 	
 	@Column(name = "storeID")
 	private double storeId;
@@ -28,12 +28,16 @@ public class User {
 	
 	public User(){}
 	
+	public User(long id, long password) {
+		Id = id;
+		this.password = password;
+	}
 
 	public double getId() {
 		return Id;
 	}
 
-	public void setId(double id) {
+	public void setId(long id) {
 		Id = id;
 	}
 
@@ -49,7 +53,7 @@ public class User {
 		return password;
 	}
 
-	public void setPassword(double password) {
+	public void setPassword(long password) {
 		this.password = password;
 	}
 
@@ -67,5 +71,10 @@ public class User {
 
 	public void setAdminLevel(String adminLevel) {
 		this.adminLevel = adminLevel;
+	}
+	
+	@Override
+	public String toString() {
+		return "User " + this.Id + " - " + this.name + ", " + this.adminLevel + " level";
 	}
 }
