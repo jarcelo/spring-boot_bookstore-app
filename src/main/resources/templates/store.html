@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8"></meta>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
+              integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"></link>
+    <link rel="stylesheet" href="/css/style.css"></link>
+    <script src="https://use.fontawesome.com/ea6070bed7.js"></script>
+    <title>Stores | Henry Books</title>
+</head>
+<body>
+ 	<div class="container">
+ 
+		<div class="row">
+			<br></br>
+			<br></br>
+			<br></br>
+			<div class="col-sm-6 col-sm-offset-3">
+				<div class="well well-lg text-center">
+					<h1><i class="fa fa-user-circle-o fa-5x"></i></h1>
+					<br></br>
+					<hr></hr>
+					<br></br>
+					<h4 class="text-danger"><span th:text="${user}"></span></h4>
+					<hr></hr>
+					
+					<form action="#" th:action="@{/inventory}" th:object="${store}" method="post">
+						<div class="form-group">
+							<label for="store" class="control-label">Select Your Store</label>
+							<div th:object="${store}">
+								<select class="form-control" id="store" name="store">
+									<option value="">-- Select --</option>
+									<option 
+										th:each="store : ${stores}"
+										th:value="${store.id}"
+										th:text="${store.name}">
+									</option>
+								</select>
+							</div>	
+						</div>		
+						<div class="form-group">
+							<button type="submit" class="login__submit">View Inventory</button>
+						</div>
+					</form>
+					
+				</div>
+			</div>
+		</div>
+ 	</div>
+</body>
+</html>

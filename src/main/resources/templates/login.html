@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8"></meta>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
+              integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"></link>
+    <link rel="stylesheet" href="/css/style.css"></link>
+    <script src="https://use.fontawesome.com/ea6070bed7.js"></script>
+    <title>Log in | Henry Books</title>
+</head>
+<body>
+	<div class="cont">
+		<div class="demo">
+			<div class="login">
+				<div>
+					<h2 class="text-center text-custom"><br></br>HENRY BOOKS</h2>
+					<hr></hr>
+				</div>
+				<div class="login__check">
+				</div>
+				<form action="#" th:action="@{/}" th:object="${user}" method="post">
+					<div class="login__form">
+						<div class="login__row">
+							<h5 class="text-error"><span th:text="${errorMessage}"></span></h5>
+						</div>
+						<div class="login__row">
+						  <svg class="login__icon name svg-icon" viewBox="0 0 20 20">
+						    <path d="M0,20 a10,8 0 0,1 20,0z M10,0 a4,4 0 0,1 0,8 a4,4 0 0,1 0,-8" />
+						  </svg>
+						  <input type="text" th:field="*{userId}" class="login__input name" placeholder="User ID" required="required" />
+						</div>
+						<div class="login__row">
+						  <svg class="login__icon pass svg-icon" viewBox="0 0 20 20">
+						    <path d="M0,20 20,20 20,8 0,8z M10,13 10,16z M4,8 a6,8 0 0,1 12,0" />
+						  </svg>
+						  <input type="password" th:field="*{password}" class="login__input pass" placeholder="Password" required="required" />
+						</div>
+						<button type="submit" class="login__submit">Sign in</button>
+					</div>
+				</form>
+		    </div>
+	    </div>
+	</div>
+</body>
+</html>

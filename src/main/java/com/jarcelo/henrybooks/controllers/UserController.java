@@ -1,5 +1,9 @@
 package com.jarcelo.henrybooks.controllers;
 
+import java.util.ArrayList;
+import java.util.List;
+
+//import org.assertj.core.util.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,15 +13,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.jarcelo.henrybooks.models.LoginViewModel;
-import com.jarcelo.henrybooks.models.User;
-import com.jarcelo.henrybooks.models.UserDao;
+//import com.jarcelo.henrybooks.models.LoginViewModel;
+//import com.jarcelo.henrybooks.models.User;
+//import com.jarcelo.henrybooks.models.UserDao;
+import com.jarcelo.henrybooks.models.*;
 
 @Controller
 public class UserController {
 	
 	@Autowired
 	private UserDao userDao;
+	@Autowired
+	private StoreDao storeDao;
 	
 //	@RequestMapping("/")
 //	@ResponseBody
@@ -64,6 +71,12 @@ public class UserController {
 		User user = userDao.findOne(loginModel.getUserId());
 		if(user != null && (user.getPassword() == loginModel.getPassword())) {
 			model.addAttribute("user", user);
+			List<Store> store = new ArrayList<>();
+			model.addAttribute("store", store);
+			List<Store> stores = new ArrayList<>();
+			// Get all stores
+			stores = (List<Store>)storeDao.findAll();
+			model.addAttribute("stores", stores);
 			return "store";
 		}
 		else {
